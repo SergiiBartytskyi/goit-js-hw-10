@@ -1,16 +1,12 @@
-/**
-  |============================
-  | include css partials with
-  | default @import url()
-  |============================
-*/
 @import url('./reset.css');
 
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   line-height: 24px;
-  font-weight: 400;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 0.04em;
 
   color: #242424;
   background-color: rgba(255, 255, 255, 0.87);
@@ -24,24 +20,108 @@
 
 .timer {
   display: flex;
-  gap: 5px;
+  gap: 15px;
   margin-top: 20px;
+
+
 }
 
 .field {
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  justify-content: center;
 }
 
 .value {
-  font-size: 32px;
-  font-weight: 600;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 48px;
+  letter-spacing: 0.04em;
+  color: rgb(46, 47, 66);
 }
 
 .label {
   text-transform: uppercase;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  color: rgb(46, 47, 66);
+}
+
+#datetime-picker,
+input[name='delay'],
+fieldset {
+  width: 200px;
+  padding: 5px 10px;
+  border: 1px solid rgb(160, 160, 160);
+  border-radius: 4px;
+  outline: none;
+  margin: 0;
+}
+
+#datetime-picker:hover,
+input[name='delay']:hover,
+fieldset:hover {
+  border-color: rgb(0, 0, 0);
+}
+
+#datetime-picker:focus,
+input[name='delay']:focus,
+fieldset:focus {
+  border-color: rgb(86, 159, 247);
+}
+
+#datetime-picker:disabled {
+  border: 1px solid rgb(204, 204, 204);
+  cursor: not-allowed;
+  color: rgb(204, 204, 204);
+}
+
+.flatpickr-day.today {
+  border: 1px solid rgb(86, 159, 247);
+}
+
+.flatpickr-day.today:hover,
+.flatpickr-day.today:focus {
+  color: rgb(81 81 81);
+}
+
+.flatpickr-day:hover,
+.flatpickr-day:focus {
+  border-color: rgb(176, 176, 176);
+  background: rgb(176, 176, 176);
+  color: rgb(81 81 81);
+}
+
+button {
+  display: inline-block;
+  width: 50px;
+  height: 27px;
+  color: rgb(255, 255, 255);
+  background: rgb(61 74 255);
+  border: transparent;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: rgba(0, 50, 255, 0.5);
+}
+
+button:disabled {
+  color: rgb(152, 152, 152);
+  background: rgb(207, 207, 207);
+}
+
+form label:first-child {
+  display: flex;
+  flex-direction: column;
+}
+
+button[type="submit"] {
+  width: 220px;
+  height: 30px;
+  padding: 5px 10px;
+  margin-top: 10px;
 }

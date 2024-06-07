@@ -1,25 +1,31 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import '../css/styles.css';
 
 const form = document.querySelector('.form');
 form.addEventListener('submit', onSubmit);
 
-form.addEventListener('submit', onSubmit);
+iziToast.settings({
+  timeout: 3000,
+  transitionIn: 'fadeInDown',
+  position: 'topRight',
+});
 
 function onSubmit(e) {
   e.preventDefault();
-  console.dir(form);
 
-  let delay = Number(form.elements.delay.value);
-  createPromise(delay).then(onSuccess).catch(onError);
+  const delay = Number(form.elements.delay.value);
+  const promiseState = form.elements.state.value;
+  createPromise(delay, promiseState)
+    .then(onSuccess)
+    .catch(onError)
+    .finally(form.reset());
 }
 
-function createPromise(delay) {
+function createPromise(delay, state) {
   return new Promise((res, rej) => {
     setTimeout(() => {
-      const promiseState = form.elements.state.value;
-      console.log(promiseState === 'fulfilled');
-      if (promiseState === 'fulfilled') {
+      if (state === 'fulfilled') {
         res({ delay });
       } else {
         rej({ delay });
@@ -30,12 +36,20 @@ function createPromise(delay) {
 
 function onSuccess({ delay }) {
   iziToast.success({
-    message: `✅ Fulfilled promise in ${delay}ms`,
+    title: 'OK',
+    message: `Fulfilled promise in ${delay}ms`,
+    iconUrl: './img/iconSuccess.svg',
+    theme: 'dark',
+    color: 'rgb(89, 161, 13)',
   });
 }
 
 function onError({ delay }) {
   iziToast.error({
-    message: `❌ Rejected promise in ${delay}ms`,
+    title: 'Error',
+    message: `Rejected promise in ${delay}ms`,
+    iconUrl: './img/iconError.svg',
+    theme: 'dark',
+    color: 'rgb(239, 64, 64)',
   });
 }
