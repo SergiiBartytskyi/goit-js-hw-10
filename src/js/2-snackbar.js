@@ -1,5 +1,6 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import { iconSuccess, iconError } from '../components/icons';
 import '../css/styles.css';
 
 const form = document.querySelector('.form');
@@ -38,7 +39,7 @@ function onSuccess({ delay }) {
   iziToast.success({
     title: 'OK',
     message: `Fulfilled promise in ${delay}ms`,
-    iconUrl: './img/iconSuccess.svg',
+    iconUrl: iconSuccess,
     theme: 'dark',
     color: 'rgb(89, 161, 13)',
   });
@@ -48,7 +49,7 @@ function onError({ delay }) {
   iziToast.error({
     title: 'Error',
     message: `Rejected promise in ${delay}ms`,
-    iconUrl: './img/iconError.svg',
+    iconUrl: iconError,
     theme: 'dark',
     color: 'rgb(239, 64, 64)',
   });
